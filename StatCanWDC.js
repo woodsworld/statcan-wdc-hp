@@ -37,6 +37,7 @@ myConnector.getSchema = function (schemaCallback) {
 };
 
 myConnector.getData = function(table, doneCallback) {    
+    _getSeriesData()
     tableau.log(comboVectorData)
     
     tableData = [];
@@ -57,8 +58,15 @@ myConnector.getData = function(table, doneCallback) {
     
 };
 
+$(document).ready(function() {
+    $("#submitVector").click(function() {
+        tableau.connectionName = "StatCan WDC"; // This will be the data source name in Tableau
+        tableau.submit(); // This sends the connector object to Tableau
+    });
+});
+
+
 tableau.registerConnector(myConnector);
-tableau.connectionName = "StatCan WDC";
 
 async function _getSeriesData() {
     //note to self - still need if statements to validate textbox inputs
@@ -84,8 +92,6 @@ async function _getSeriesData() {
     //console.log(errorTest);
     tableau.submit();
 }
-
-
 
 
 
