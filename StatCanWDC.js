@@ -36,8 +36,8 @@ myConnector.getSchema = function (schemaCallback) {
     schemaCallback([tableSchema]);
 };
 
-myConnector.getData = function(table, doneCallback) {    
-    _getSeriesData()
+myConnector.getData = async function(table, doneCallback) {    
+    await _getSeriesData()
     tableau.log(comboVectorData)
     
     tableData = [];
